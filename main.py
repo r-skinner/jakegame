@@ -41,11 +41,14 @@ while running:
                 player.velocity[0] = -200 * dt
             elif event.key == pygame.K_d:
                 player.velocity[0] = 200 * dt
-        elif event.type == pygame.KEYUP:
-            if event.key == pygame.K_w or event.key == pygame.K_s:
-                player.velocity[1] = 0
-            elif event.key == pygame.K_a or event.key == pygame.K_d:
-                player.velocity[0] = 0
+        if player.velocity[1] > 0:
+            player.velocity[1] -= 10 * dt
+        elif player.velocity[1] < 0:
+            player.velocity[1] += 10 * dt
+        if player.velocity[0] > 0:
+            player.velocity[0] -= 10 * dt
+        elif player.velocity[0] < 0:
+            player.velocity[0] += 10 * dt
 
     player.update()
 
